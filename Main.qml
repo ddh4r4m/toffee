@@ -40,8 +40,8 @@ Pane {
     padding: config.ScreenPadding
     palette.button: "transparent"
     palette.highlight: config.AccentColor
-    palette.text: config.MainColor
-    palette.buttonText: config.MainColor
+    palette.text: "#000000"
+    palette.buttonText: "#000000"
     palette.window: config.BackgroundColor
 
     font.family: config.Font
@@ -92,19 +92,39 @@ Pane {
             color: root.palette.window
             visible: config.HaveFormBackground == "true" ? true : false
             opacity: config.PartialBlur == "true" ? 0.3 : 1
+            height: form.height
+            radius: 15
+            clip: true
             z: 1
+        }
+
+        Rectangle {
+            id: orangeTint
+            anchors.fill: form
+            color: "#FF8C00"  // Dark Orange
+            opacity: 0.2
+            radius: 15
+            z: 2
         }
 
         LoginForm {
             id: form
-
-            height: virtualKeyboard.state == "visible" ? parent.height - virtualKeyboard.implicitHeight : parent.height
-            width: parent.width / 3
+            clip: true
+            height: virtualKeyboard.state == "visible" ? parent.height - virtualKeyboard.implicitHeight - (parent.height * 0.48) : parent.height * 0.52
+            width: parent.width / 2.5
             anchors.horizontalCenter: config.FormPosition == "center" ? parent.horizontalCenter : undefined
             anchors.left: config.FormPosition == "left" ? parent.left : undefined
             anchors.right: config.FormPosition == "right" ? parent.right : undefined
+            anchors.verticalCenter: parent.verticalCenter
             virtualKeyboardActive: virtualKeyboard.state == "visible" ? true : false
-            z: 1
+            z: 3
+        }
+
+        Rectangle {
+            id: maskRect
+            anchors.fill: form
+            radius: 15
+            visible: false
         }
 
         Button {
@@ -249,19 +269,21 @@ Pane {
 
         ShaderEffectSource {
             id: blurMask
-
             sourceItem: backgroundImage
             width: form.width
-            height: parent.height
+            height: form.height
             anchors.centerIn: form
             sourceRect: Qt.rect(x,y,width,height)
             visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false
+            layer.enabled: true
+            layer.effect: OpacityMask {
+                maskSource: maskRect
+            }
         }
 
         GaussianBlur {
             id: blur
-
-            height: parent.height
+            height: form.height
             width: config.FullBlur == "true" ? parent.width : form.width
             source: config.FullBlur == "true" ? backgroundImage : blurMask
             radius: config.BlurRadius
@@ -269,6 +291,10 @@ Pane {
             cached: true
             anchors.centerIn: config.FullBlur == "true" ? parent : form
             visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false
+            layer.enabled: true
+            layer.effect: OpacityMask {
+                maskSource: maskRect
+            }
         }
     }
 }

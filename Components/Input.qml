@@ -37,7 +37,7 @@ Column {
     Item {
         id: usernameField
 
-        height: root.font.pointSize * 4.5
+        height: root.font.pointSize * 3.5
         width: parent.width / 2
         anchors.horizontalCenter: parent.horizontalCenter
 
@@ -75,7 +75,7 @@ Column {
                     text: model.name
                     font.pointSize: root.font.pointSize * 0.8
                     font.capitalization: Font.Capitalize
-                    color: selectUser.highlightedIndex === index ? root.palette.highlight.hslLightness >= 0.7 ? "#444" : "white" : root.palette.window.hslLightness >= 0.8 ? root.palette.highlight.hslLightness >= 0.8 ? "#444" : root.palette.highlight : "white"
+                    color: selectUser.highlightedIndex === index ? "#000000" : "#000000"
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                 }
@@ -95,7 +95,7 @@ Column {
                     icon.height: parent.height * 0.25
                     icon.width: parent.height * 0.25
                     enabled: false
-                    icon.color: root.palette.text
+                    icon.color: "#000000"
                     icon.source: Qt.resolvedUrl("../Assets/User.svgz")
             }
 
@@ -223,7 +223,7 @@ Column {
 
     Item {
         id: passwordField
-        height: root.font.pointSize * 4.5
+        height: root.font.pointSize * 3.5
         width: parent.width / 2
         anchors.horizontalCenter: parent.horizontalCenter
 
@@ -277,7 +277,7 @@ Column {
 
     Item {
         id: secretCheckBox
-        height: root.font.pointSize * 7
+        height: root.font.pointSize * 5
         width: parent.width / 2
         anchors.horizontalCenter: parent.horizontalCenter
 
@@ -410,7 +410,7 @@ Column {
     }
 
     Item {
-        height: root.font.pointSize * 2.3
+        height: root.font.pointSize * 1.8
         width: parent.width / 2
         anchors.horizontalCenter: parent.horizontalCenter
         Label {
@@ -453,7 +453,7 @@ Column {
 
     Item {
         id: login
-        height: root.font.pointSize * 3
+        height: root.font.pointSize * 2.5
         width: parent.width / 2
         anchors.horizontalCenter: parent.horizontalCenter
 
@@ -468,11 +468,11 @@ Column {
 
             contentItem: Text {
                 text: parent.text
-                color: config.OverrideLoginButtonTextColor != "" ? config.OverrideLoginButtonTextColor : root.palette.highlight.hslLightness >= 0.7 ? "#444" : "white"
+                color: "#FF8C00"  // Dark Orange as default
                 font.pointSize: root.font.pointSize
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                opacity: 0.5
+                opacity: 1
             }
 
             background: Rectangle {
@@ -488,11 +488,12 @@ Column {
                     when: loginButton.down
                     PropertyChanges {
                         target: buttonBackground
-                        color: Qt.darker(root.palette.highlight, 1.1)
+                        color: "#FF8C00"  // Dark Orange
                         opacity: 1
                     }
                     PropertyChanges {
                         target: loginButton.contentItem
+                        color: "#000000"
                     }
                 },
                 State {
@@ -500,11 +501,12 @@ Column {
                     when: loginButton.hovered
                     PropertyChanges {
                         target: buttonBackground
-                        color: Qt.lighter(root.palette.highlight, 1.15)
+                        color: "#FF8C00"  // Dark Orange
                         opacity: 1
                     }
                     PropertyChanges {
                         target: loginButton.contentItem
+                        color: "#000000"
                         opacity: 1
                     }
                 },
@@ -513,11 +515,12 @@ Column {
                     when: loginButton.activeFocus
                     PropertyChanges {
                         target: buttonBackground
-                        color: Qt.lighter(root.palette.highlight, 1.2)
+                        color: "#FF8C00"  // Dark Orange
                         opacity: 1
                     }
                     PropertyChanges {
                         target: loginButton.contentItem
+                        color: "#000000"
                         opacity: 1
                     }
                 },
@@ -525,12 +528,13 @@ Column {
                     name: "enabled"
                     when: loginButton.enabled
                     PropertyChanges {
-                        target: buttonBackground;
-                        color: root.palette.highlight;
-                        opacity: 1
+                        target: buttonBackground
+                        color: "white"
+                        opacity: 0.2
                     }
                     PropertyChanges {
-                        target: loginButton.contentItem;
+                        target: loginButton.contentItem
+                        color: "#FF8C00"
                         opacity: 1
                     }
                 }
