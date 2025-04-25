@@ -1,5 +1,5 @@
 [SddmGreeterTheme]
-Name=sonGoku
+Name=sanandreas
 Description=Premium Sugar for SDDM
 Author=Dharam Dhurandhar
 Copyright=Copyright (C) 2018 Dharam Dhurandhar
@@ -12,5 +12,5 @@ MainScript=Main.qml
 ConfigFile=theme.conf
 TranslationsDirectory=translations
 Email=ddh4r4m@gmail.com
-Theme-Id=songoku
+Theme-Id=sanandreas
 Theme-API=2.11
