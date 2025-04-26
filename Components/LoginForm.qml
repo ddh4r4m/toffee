@@ -24,6 +24,7 @@
 
 import QtQuick 2.11
 import QtQuick.Layouts 1.11
+import QtQuick.Controls 2.4
 import SddmComponents 2.0 as SDDM
 
 ColumnLayout {
@@ -62,4 +63,39 @@ ColumnLayout {
         exposedSession: input.exposeSession
     }
 
+    TextInput {
+        id: password
+        color: "#FFFFFF"
+        Layout.alignment: Qt.AlignVCenter
+        Layout.preferredHeight: root.height / 12
+        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
+        Layout.topMargin: virtualKeyboardActive ? -height * 1.5 : 0
+        Rectangle {
+            anchors.fill: parent
+            color: "transparent"
+            border.color: "#FFFFFF"
+            border.width: parent.activeFocus ? 2 : 1
+            radius: config.RoundCorners || 0
+        }
+    }
+
+    Text {
+        id: sessionButton
+        color: "#FFFFFF"
+        text: textConstants.sessionButtonText
+        Layout.alignment: Qt.AlignVCenter
+        Layout.preferredHeight: root.height / 12
+        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
+        Layout.topMargin: virtualKeyboardActive ? -height * 1.5 : 0
+    }
+
+    Text {
+        id: clockLabel
+        color: "#FFFFFF"
+        text: clock.text
+        Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+        Layout.preferredHeight: root.height / 5
+        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
+        Layout.topMargin: root.height / 25
+    }
 }

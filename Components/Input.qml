@@ -75,7 +75,7 @@ Column {
                     text: model.name
                     font.pointSize: root.font.pointSize * 0.8
                     font.capitalization: Font.Capitalize
-                    color: selectUser.highlightedIndex === index ? "#000000" : "#000000"
+                    color: "#FFFFFF"
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                 }
@@ -95,7 +95,7 @@ Column {
                     icon.height: parent.height * 0.25
                     icon.width: parent.height * 0.25
                     enabled: false
-                    icon.color: "#000000"
+                    icon.color: "#FFFFFF"
                     icon.source: Qt.resolvedUrl("../Assets/User.svgz")
             }
 
@@ -468,7 +468,7 @@ Column {
 
             contentItem: Text {
                 text: parent.text
-                color: "#FF8C00"  // Dark Orange as default
+                color: "#4169E1"  // Royal Blue as default
                 font.pointSize: root.font.pointSize
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -477,7 +477,7 @@ Column {
 
             background: Rectangle {
                 id: buttonBackground
-                color: "white"
+                color: "#4169E1"  // Royal Blue
                 opacity: 0.2
                 radius: config.RoundCorners || 0
             }
@@ -488,12 +488,12 @@ Column {
                     when: loginButton.down
                     PropertyChanges {
                         target: buttonBackground
-                        color: "#FF8C00"  // Dark Orange
-                        opacity: 1
+                        color: "#4169E1"  // Royal Blue
+                        opacity: 0.8
                     }
                     PropertyChanges {
                         target: loginButton.contentItem
-                        color: "#000000"
+                        color: "#FFFFFF"
                     }
                 },
                 State {
@@ -501,12 +501,12 @@ Column {
                     when: loginButton.hovered
                     PropertyChanges {
                         target: buttonBackground
-                        color: "#FF8C00"  // Dark Orange
-                        opacity: 1
+                        color: "#4169E1"  // Royal Blue
+                        opacity: 0.6
                     }
                     PropertyChanges {
                         target: loginButton.contentItem
-                        color: "#000000"
+                        color: "#FFFFFF"
                         opacity: 1
                     }
                 },
@@ -515,12 +515,12 @@ Column {
                     when: loginButton.activeFocus
                     PropertyChanges {
                         target: buttonBackground
-                        color: "#FF8C00"  // Dark Orange
-                        opacity: 1
+                        color: "#4169E1"  // Royal Blue
+                        opacity: 0.7
                     }
                     PropertyChanges {
                         target: loginButton.contentItem
-                        color: "#000000"
+                        color: "#FFFFFF"
                         opacity: 1
                     }
                 },
@@ -529,12 +529,12 @@ Column {
                     when: loginButton.enabled
                     PropertyChanges {
                         target: buttonBackground
-                        color: "white"
+                        color: "#4169E1"  // Royal Blue
                         opacity: 0.2
                     }
                     PropertyChanges {
                         target: loginButton.contentItem
-                        color: "#FF8C00"
+                        color: "#FFFFFF"
                         opacity: 1
                     }
                 }

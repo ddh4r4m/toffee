@@ -40,8 +40,8 @@ Pane {
     padding: config.ScreenPadding
     palette.button: "transparent"
     palette.highlight: config.AccentColor
-    palette.text: "#000000"
-    palette.buttonText: "#000000"
+    palette.text: "#FFFFFF"
+    palette.buttonText: "#FFFFFF"
     palette.window: config.BackgroundColor
 
     font.family: config.Font
@@ -91,7 +91,7 @@ Pane {
             anchors.centerIn: form
             color: root.palette.window
             visible: config.HaveFormBackground == "true" ? true : false
-            opacity: config.PartialBlur == "true" ? 0.3 : 1
+            opacity: config.PartialBlur == "true" ? 0.2 : 0.6
             height: form.height
             radius: 15
             clip: true
@@ -101,8 +101,8 @@ Pane {
         Rectangle {
             id: orangeTint
             anchors.fill: form
-            color: "#FF8C00"  // Dark Orange
-            opacity: 0.2
+            color: "#4169E1"  // Royal Blue
+            opacity: 0.15
             radius: 15
             z: 2
         }
